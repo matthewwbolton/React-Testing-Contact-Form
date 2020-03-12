@@ -18,7 +18,7 @@ const ContactForm = () => {
           <input
             id='firstName'
             name="firstName"
-            placeholder="bill"
+            placeholder="First Name"
             ref={register({ required: true, maxLength: 3 })}
           />
           {errors.firstName && (
@@ -31,7 +31,7 @@ const ContactForm = () => {
           <input
             id='lastName'
             name="lastName"
-            placeholder="luo"
+            placeholder="Last Name"
             ref={register({ required: true })}
           />
           {errors.lastName && (
@@ -40,24 +40,24 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label htmlFor="email" placeholder="bluebill1049@hotmail.com">
+          <label htmlFor="email" >
             Email*
           </label>
-          <input id='email' name="email" ref={register({ required: true })} />
+          <input id='email' name="email" placeholder="Email" ref={register({ required: true })} />
           {errors.email && (
             <p>Looks like there was an error: {errors.email.type}</p>
           )}
         </div>
         <div>
           <label htmlFor="message">Message</label>
-          <textarea id='message' name="message" ref={register({ required: false })} />
+          <textarea id='message' name="message" placeholder='Type Your Message Here' ref={register({ required: false })} />
         </div>
         {data && (
           <pre style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <input name='submit' type="submit" />
+        <input role='button' type="submit" />
       </form>
     </div>
   );

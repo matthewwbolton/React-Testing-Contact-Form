@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, fireEvent, getByRole, getAllByRole, getByDisplayValue } from "@testing-library/react";
+import { render, fireEvent, getByRole, getAllByRole, getByDisplayValue, getAllByPlaceholderText, getByTestId, findByTestId } from "@testing-library/react";
 import ContactForm from './ContactForm';
 import { act } from 'react-dom/test-utils';
 
 test('form renders correctly', () => {
-   const { getByLabelText, getByText, getByRole  } = render(<ContactForm />);
+   const { getByLabelText, getByText, getByRole, getByPlaceholderText, getByTestId } = render(<ContactForm />);
 
    const firstNameInput = getByLabelText(/first name/i);
    const lastNameInput = getByLabelText(/last name/i);
@@ -17,10 +17,22 @@ test('form renders correctly', () => {
    fireEvent.change(messageInput, { target: { name: 'message', value: 'This is a test message!' }});
 
    const submitButton = getByRole('button');
+   
+//    act(() => {
+//        fireEvent.click(submitButton);
+//    }); 
 
-   act(() => {
-       fireEvent.click(submitButton);
-   }); 
+// fireEvent.click(submitButton);
+
+const firstNamePlaceholderText = getByPlaceholderText(/first name/i);
+const lastNamePlaceholderText = getByPlaceholderText(/last name/i);
+const emailPlaceholderText = getByPlaceholderText(/email/i);
+const messagePlaceholderText = getByPlaceholderText(/Type Your Message Here/i);
+
+
+
+
+
 
 });
 
